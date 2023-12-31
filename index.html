@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+<nav>
+<div class="container">
+ <h1>CINEFORD UNIVERSITY</h1>
+</div>
+</nav>   
+<div id="sidebar" class="sidebar">
+    
+    <a href="https://www.udemy.com/?utm_source=adwords-brand&utm_medium=udemyads&utm_campaign=NEW-AW-PROS-Branded-Search-TR-TUR_._ci__._sl_TUR_._vi__._sd_All_._la_TR_._&tabei=7&utm_term=_._ag_55807532837_._ad_290966506993_._de_c_._dm__._pl__._ti_kwd-296956216253_._li_21080_._pd__._&gad_source=1&gclid=CjwKCAiAnL-sBhBnEiwAJRGightQMHUHn2PpNlcsR5r264nBxVxLJ7TKDy-ZUXBSUkSHIH4qrIZcrBoCS28QAvD_BwE">Contents </a>
+    <a href="https://www.linkedin.com/in/gulsinemkazanci/">Contact</a>
+  
+  
+</div>
+
+<div id="main">
+    <button type="button" id="openBtn">☰ Options</button>
+    
+    <h2 style="text-align: center;"> STUDENT MANAGEMENT SYSTEM </h2>
+</div>
+    
+
+<!-- Student Form -->
+<form id="studentForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" required><br>
+
+    <label for="midterm">Midterm:</label>
+    <input type="number" id="midterm" name="midterm" required><br>
+
+    <label for="final">Final:</label>
+    <input type="number" id="final" name="final" required><br>
+
+    <label for="courseSelector">Course Optıon:</label>
+    <select id="courseSelector" name="courseSelector"></select><br>
+    <label>
+        <p>10 scale</p>
+        <input type="radio" name="calculationgrade" value="10scale">
+        
+    </label><p>7 scale</p>
+    <label><input type="radio" name="calculationgrade" value="7scale">
+       </label> <br>
+    <button type="button" onclick="updateStudentScores()">UPDATE GRADE</button>
+    <button type="button" onclick="deleteStudent()">DELETE STUDENT</button>
+    <button type="button" onclick="addStudentData()">ADD STUDENT</button>
+    
+    
+</form>
+
+<!-- Student Table -->
+<table id="dataTableStudent" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+        
+        </tr>
+    </thead>
+    <tbody>
+     
+    
+    </tbody>
+</table>
+
+
+<!-- Course Form -->
+<form id="courseForm">
+    <label for="courseName">Course Name:</label>
+    <input type="text" id="courseName" name="courseName" required><br>
+
+    <label for="courseCode">Course ID:</label>
+    <input type="text" id="courseCode" name="courseCode" required><br>
+    <label for="courseCredit">Course Credit:</label>
+    <input type="text" id="courseCredit" name="courseCredit" required><br>
+
+    <button type="button" onclick="addCourseData()">ADD TO COURSE</button>
+    <button type="button" onclick="deleteCourse()">DELETE TO COURSE</button>
+    
+</form>
+
+<!-- Course Table -->
+<table id="dataTableCourse" border="1">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Course Credit</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+</table>
+
+<!-- Search by course and display form -->
+<form id="viewStudentScoresForm">
+    <label for="searchInput">Search by Course:</label>
+    <input type="text" id="searchInput" name="searchInput">
+    <button type="button" onclick="searchcourses()">SEARCH</button>
+</form>
+
+<!--Search by course and display table -->
+<table id="studentScoresTable" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+        </tr>
+    </thead>
+    <tbody id="studentTableBody">
+
+    </tbody>
+</table>
+
+<div class="btn">
+    <!-- Display course and student form -->
+
+<div class="button-container">
+    <button type="button" id="btn1" onclick="viewAllStudentScores()">DISPLAY TO ALL STUDENTS</button>
+</div>
+
+<!--  Display course and student form --->
+<table id="allStudentScoresTable" border="1">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Kurs Adı</th>
+            <th>Kurs ID</th>
+            <th>Harf Notu</th>
+        </tr>
+    </thead>
+    <tbody id="allStudentScoresTableBody">
+     
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+
+<form id="viewStudentScoresForm">
+    <label for="searchInputname">Search by Name and Surname:</label>
+    <input type="text" id="searchInputname" name="searchInputname">
+    <button type="button" onclick="searchStudentsByNameAndSurname()">SEARCH</button>
+</form>
+
+
+<table id="studentScoresTable" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+        </tr>
+    </thead>
+    <tbody id="sttable">
+    </tbody>
+</table>
+<p>SEARCH BY COURSE</p>
+<form>
+  <label for="courseSelector">Course Optıon:</label>
+  <select id="courseSelector2" name="courseSelector2"></select><br>
+  <button type="button" onclick="listby()">SEARCH</button>
+</form>
+<table id="l" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+        </tr>
+    </thead>
+    <tbody id="le">
+  
+    </tbody>
+</table>
+
+<p>FAILED STUDENTS</p>
+
+<form>
+    <label for="courseSelector">Course Optıon:</label>
+    <select id="courseSelector3" name="courseSelector3"></select><br>
+    <button type="button" onclick="listby1()">SEARCH</button>
+  </form>
+  <table id="l" border="1">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+          </tr>
+      </thead>
+      <tbody id="lem">
+         
+      </tbody>
+  </table>
+  
+  <p> PASSED STUDENTS</p>
+<form>
+    <label for="courseSelector">Course Optıon:</label>
+    <select id="courseSelector4" name="courseSelector4"></select><br>
+    <button type="button" onclick="listby2()">SEARCH</button>
+  </form>
+  <table id="l" border="1">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Course Name</th>
+            <th>Course ID</th>
+            <th>Letter Grade</th>
+          </tr>
+      </thead>
+      <tbody id="lema">
+         
+      </tbody>
+  </table>
+ <p> PASSED AND FAILED STUDENT OF COUNTS OF STUDENT</p>
+ <form>
+    <label for="courseSelector">Course Optıon:</label>
+    <select id="courseSelector5" name="courseSelector5"></select><br>
+    <button type="button" onclick="listby3()">SEARCH</button>
+  </form>
+  <table id="l" border="1">
+      <thead>
+          <tr>
+              <th>Course Name</th>
+              <th>Passed Students</th>
+              <th>Failed Students</th>
+         
+          </tr>
+      </thead>
+      <tbody id="leman">
+      
+      </tbody>
+  </table>
+  <div class="btn">
+    <p>GPA Results</p>
+    <div class="button-container">
+        <button type="button" id="btn1" onclick="calculateAndDisplayGPA()">Calculate GPA</button>
+    </div>
+    <table id="resultsTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>GPA</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Results will be populated here -->
+        </tbody>
+    </table>
+
+    <!-- Button to Calculate and Display GPA -->
+    
+
+  </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
