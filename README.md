@@ -1,5 +1,6 @@
 # web3507final2023
-https://gsinem.github.io/web3507final2023/
+deploy link:https://gsinem.github.io/web3507final2023/
+github link:https://github.com/gsinem/web3507final2023
 
 Student Management System
 web3507final
